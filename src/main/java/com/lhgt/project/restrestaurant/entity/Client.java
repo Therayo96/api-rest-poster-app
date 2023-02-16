@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 
@@ -25,14 +26,16 @@ public class Client {
     @NotEmpty(message = "The lastname is required")
     @Column(nullable = false)
     private String lastname;
+
     private String address;
 
     @NotEmpty(message = "The phone number is required")
-    @Max(12)
+    @Size(min = 8,max = 12)
     @Column(nullable = false)
     private String phoneNumber;
 
     @Email
+    @Column(unique = true)
     private String Email;
 
 
